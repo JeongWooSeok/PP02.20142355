@@ -3,7 +3,7 @@
 SDL_Window* g_pWindow = 0;
 SDL_Renderer* g_pRenderer = 0;
 
-bool g_bRunning = false; // this will create a loop
+bool g_bRunning = false;
 
 bool init(const char* title, int xpos, int ypos, int width, int height, int flags)
 {
@@ -16,18 +16,15 @@ bool init(const char* title, int xpos, int ypos, int width, int height, int flag
 		}
 	}
 	else {
-		return false; // sdl could not initialize
+		return false;
 	}
 	return true;
 }
 
 void render()
 {
-	// set to black
 	SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 0, 255);
-	// clear the window to black
 	SDL_RenderClear(g_pRenderer);
-	// show the window
 	SDL_RenderPresent(g_pRenderer);
 }
 
@@ -40,12 +37,11 @@ int main(int argc, char* argv[])
 		g_bRunning = true;
 	}
 	else {
-		return 1; // something's wrong
+		return 1;
 	}
 	while (g_bRunning) {
 		render();
 	}
-	// clean up SDL
 	SDL_Quit();
 	return 0;
 }
